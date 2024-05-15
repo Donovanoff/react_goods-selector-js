@@ -43,6 +43,7 @@ export const App = () => {
         <tbody>
           {goods.map(good => (
             <tr
+              key={good.name}
               data-cy="Good"
               className={cn({
                 'has-background-success-light': good === selectedGood,
@@ -56,9 +57,7 @@ export const App = () => {
                     'is-info': good === selectedGood,
                   })}
                   onClick={() => {
-                    return good === selectedGood
-                      ? setSelectedGood('')
-                      : setSelectedGood(good);
+                    setSelectedGood(good === selectedGood ? '' : good);
                   }}
                 >
                   {good === selectedGood ? '-' : '+'}
